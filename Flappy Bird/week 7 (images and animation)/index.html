@@ -1,0 +1,46 @@
+<html>
+<body>
+
+<canvas id="canvas"></canvas> <!-- create canvas -->
+
+<img src="player_img.png" id="player_img" height="0" width="0"></img> <!-- create image -->
+<img src="pole.png" id="pole_img1" height="0" width="0"></img> <!-- create image -->
+<img src="pole2.png" id="pole_img2" height="0" width="0"></img> <!-- create image -->
+
+<style>
+body {
+  overflow: hidden; /* remove scrolling */
+}
+
+#canvas{
+  background-image: url(background.png); /*makes bg the bg img */
+  background-size: cover; /*have backgroudn cover whole screen */
+  background-size: contain; /*have backgroudn cover whole screen */
+  height: 100%; /*makes canvas cover whole screen */
+  width: 100%;  /*makes canvas cover whole screen */
+}
+</style>
+<script src="player.js"></script>
+<script src="player_movement.js"></script>
+<script src="poles.js"></script>
+<script>
+var canvas = document.getElementById("canvas"); //gets canvas
+var ctx = canvas.getContext("2d"); //makes canvas into a 2d plane
+
+var player = new Player(canvas.width/6,canvas.height/2,40,7,7); //create player
+
+var pole1 = new Pole(canvas.width+player.size,player.size*2,canvas.height/Math.floor((Math.random() * 10) + 2));
+var pole2 = new Pole(canvas.width+(player.size*4.5),player.size*2,canvas.height/Math.floor((Math.random() * 10) + 2));
+var pole3 = new Pole(canvas.width+(player.size*8),player.size*2,canvas.height/Math.floor((Math.random() * 10) + 2));
+
+setInterval(function(){ //create game loop
+  canvas.width=canvas.width;
+  movement();
+  player.update();
+  pole1.update();
+  pole2.update();
+  pole3.update();
+},100);
+</script>
+</body>
+</html>

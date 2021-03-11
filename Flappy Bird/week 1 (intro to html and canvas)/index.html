@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<canvas id="canvas"></canvas> <!-- create canvas -->
+
+<img src="ex_img.jpg" id="img" height="0" width="0"></img> <!-- create image -->
+
+<style>
+body {
+  overflow: hidden; /* remove scrolling */
+}
+
+#canvas{
+  background-color: black; /*makes bg black */
+  height: 100%; /*makes canvas cover whole screen */
+  width: 100%;  /*makes canvas cover whole screen */
+}
+</style>
+<script>
+var canvas = document.getElementById("canvas"); //gets canvas
+var ctx = canvas.getContext("2d"); //makes canvas into a 2d plane
+
+setInterval(function(){ //create game loop
+  ctx.drawImage(document.getElementById("img"), 10, 10, 400, 100); //draws img on canvas
+},100);
+</script>
+</body>
+</html>
